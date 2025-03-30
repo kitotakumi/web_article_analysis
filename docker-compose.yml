@@ -1,0 +1,12 @@
+services:
+  competitor_analysis: # サービス名 (コンテナの名前)
+    image: competitor_analysis # 使用するイメージ名
+    ports:
+      - "9000:8080" # ポートマッピング
+    environment:
+      JINA_API_KEY: yourapikey
+      GEMINI_API_KEY: yourapikey
+      LOCAL_ENV: "true"
+    volumes:
+      - ./tmp:/tmp
+      - ./main.py:/app/main.py
