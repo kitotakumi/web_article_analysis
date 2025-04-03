@@ -15,7 +15,7 @@ import boto3
 #実行環境がローカルの場合、LOCAL_ENVを設定する
 LOCAL_ENV = os.environ.get("LOCAL_ENV", "false").lower() == "true"
 
-# 関数外で実行することでウォームスタート時に処理を省略
+# 関数外で実行することでウォームスタートを活かす
 if not LOCAL_ENV:
     s3 = boto3.client('s3')
     S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
@@ -154,7 +154,7 @@ def upload_to_s3(image_path, unique_id):
         return "no_url"
     else:
         try: 
-            s3_key = f"screenshot_{unique_id}.png"
+            s3_key = f"live/screenshot_{unique_id}.png"
             s3.upload_file(image_path, S3_BUCKET_NAME, s3_key, ExtraArgs={'ContentType': 'image/png'})
             #公開urlを返却
             return f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{s3_key}"
@@ -165,6 +165,7 @@ def upload_to_s3(image_path, unique_id):
 def process_url(url, query):
     # 一意のIDを生成
     unique_id = str(uuid.uuid4())
+    print(f"{unique_id}の処理を開始しますよnoooooo")
 
     # /tmp 以下にファイル保存（Lambda環境での一時ディレクトリ）
     screenshot_path = f"/tmp/screenshot_{unique_id}.png"

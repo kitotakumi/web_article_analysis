@@ -1,12 +1,18 @@
 services:
   competitor_analysis: # サービス名 (コンテナの名前)
-    image: competitor_analysis # 使用するイメージ名
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: competitor_analysis:latest # 使用するイメージ名
     ports:
       - "9000:8080" # ポートマッピング
     environment:
-      JINA_API_KEY: yourapikey
-      GEMINI_API_KEY: yourapikey
+      JINA_API_KEY: "jina_c6d6a3ab49b642e58db55a0625f10403JzxRpqiR4GmrhV9G2NBn85RPUzLd"
+      GEMINI_API_KEY: "AIzaSyAh0D7fr9Y-1D8j-G1fXayFcEw_1mYtWZ0"
       LOCAL_ENV: "true"
     volumes:
       - ./tmp:/tmp
-      - ./main.py:/app/main.py
+    develop:
+      watch:
+        - action: rebuild
+          path: ./main.py
