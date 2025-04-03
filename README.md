@@ -13,14 +13,22 @@
 
 - **コンテナ化された Lambda 環境**  
   ECR にデプロイすることで、Lambda として実行可能な形にしています。  
-  ※ Selenium で利用する Chrome と chromedriver のバージョン管理を正確に行うため、コンテナイメージを用いて Lambda を作成しています。
+  Selenium で利用する Chrome と chromedriver のバージョン管理を正確に行うため、コンテナイメージを用いて Lambda を作成しています。
 
 - **ホットリロード機能の実装**  
   開発時にホットリロード機能を実装しており、コード変更時に自動で反映されます。
 
 ## セットアップ
 ### ローカルで実行
+- リポジトリのクローン
+
+```bash
+git clone https://github.com/kitotakumi/web_article_analysis.git
+cd web_article_analysis
+```
+
 - Docker コンテナのビルドと起動
+  ymlファイルの環境変数を書き換えてください
 
 ```bash
 docker compose up --watch
