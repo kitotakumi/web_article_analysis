@@ -26,6 +26,13 @@ def fetch_html(url):
     response.raise_for_status()  # ステータスコードが200以外の場合、例外を発生させる
     return response.text
 
+def take_fullpage_screenshot_with_timeout(url, output_path, timeout_seconnds=30):
+    # タイムアウトを設定
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        future = executor.submit(take_fullpage_screenshot, url, output_path)
+        return future.result(timeout=timeout_seconnds)
+
+
 def take_fullpage_screenshot(url, output_path):
     """指定のURLの全体スクリーンショットを取得する"""
     options = webdriver.ChromeOptions()
@@ -156,6 +163,7 @@ def upload_to_s3(image_path, unique_id):
         try: 
             s3_key = f"live/screenshot_{unique_id}.png"
             s3.upload_file(image_path, S3_BUCKET_NAME, s3_key, ExtraArgs={'ContentType': 'image/png'})
+            print("s3へのアップロードが完了しました")
             #公開urlを返却
             return f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{s3_key}"
         except Exception as e:
@@ -187,8 +195,11 @@ def process_url(url, query):
     try:
         # スクリーンショット取得
         exit_picture = True
-        take_fullpage_screenshot(url, screenshot_path)
+        take_fullpage_screenshot_with_timeout(url, screenshot_path)
         print(f"スクリーンショットを '{screenshot_path}' に保存しました。")
+    except TimeoutError:
+        print("スクリーンショット取得がタイムアウトしました。")
+        exit_picture = False
     except Exception as e:
         print(f"スクリーンショット取得に失敗しました: {e}")
         exit_picture = False
@@ -211,16 +222,15 @@ def process_url(url, query):
         else:
             gemini_text = call_gemini_no_image(query + jina_text)
             image_encoded = "no_image"
-            image_url = "no_image"
-        print(f"Gemini APIの結果: {gemini_text}")
+            image_url = "can't_get_image"
+        print(f"Gemini回答が生成されました")
     except Exception as e:
         gemini_text = f"Gemini API 呼び出しに失敗しました: {e}"
         image_encoded = "no_image"
-        image_url = "no_image"
+        image_url = "can't_get_image"
     
     return {
         "url": url,
-        "screenshot": image_encoded,
         "screenshot_url" : image_url,
         "gemini_text": gemini_text,
     }
