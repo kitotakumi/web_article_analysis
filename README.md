@@ -27,7 +27,7 @@ git clone https://github.com/kitotakumi/web_article_analysis.git
 cd web_article_analysis
 ```
 
-- Docker コンテナのビルドと起動
+- Docker コンテナのビルドと起動<br>
   ymlファイルの環境変数を書き換えてください
 
 ```bash
@@ -40,7 +40,8 @@ docker compose up --watch
 aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin your_account_id.dkr.ecr.your_region.amazonaws.com
 ```
 
-- Docker イメージのビルドおよびプッシュ
+- Docker イメージのビルドおよびプッシュ<br>
+  platformの指定とprovenance=falseは必須です。
 ```bash
 docker buildx build --platform linux/amd64 --provenance=false --push -t your_repository_url/competitor_analysis:latest .
 ```
