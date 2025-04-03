@@ -7,8 +7,8 @@ services:
     ports:
       - "9000:8080" # ポートマッピング
     environment:
-      JINA_API_KEY: "jina_c6d6a3ab49b642e58db55a0625f10403JzxRpqiR4GmrhV9G2NBn85RPUzLd"
-      GEMINI_API_KEY: "AIzaSyAh0D7fr9Y-1D8j-G1fXayFcEw_1mYtWZ0"
+      JINA_API_KEY: "your_api_key"
+      GEMINI_API_KEY: "your_api_key"
       LOCAL_ENV: "true"
     volumes:
       - ./tmp:/tmp
