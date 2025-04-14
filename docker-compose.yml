@@ -16,3 +16,5 @@ services:
       watch:
         - action: rebuild
           path: ./main.py
+        - action: rebuild
+          path: ./Dockerfile

@@ -13,7 +13,8 @@ FROM --platform=linux/amd64 public.ecr.aws/lambda/python@sha256:63811c90432ba7a9
 RUN dnf install -y atk cups-libs gtk3 libXcomposite alsa-lib \
     libXcursor libXdamage libXext libXi libXrandr libXScrnSaver \
     libXtst pango at-spi2-atk libXt xorg-x11-server-Xvfb \
-    xorg-x11-xauth dbus-glib dbus-glib-devel nss mesa-libgbm
+    xorg-x11-xauth dbus-glib dbus-glib-devel nss mesa-libgbm \
+    ipa-gothic-fonts
 
 # Pythonパッケージのインストール
 COPY requirements.txt ./
