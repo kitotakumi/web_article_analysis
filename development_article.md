@@ -1,4 +1,20 @@
 # Docker→LambdaでSelemium+Geminiの並列スクレイピングを実装するまでの苦難
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+    - [はじめに](#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB)
+    - [実装意図](#%E5%AE%9F%E8%A3%85%E6%84%8F%E5%9B%B3)
+    - [コード構成](#%E3%82%B3%E3%83%BC%E3%83%89%E6%A7%8B%E6%88%90)
+    - [Lambda用のDockerコンテナ構築](#lambda%E7%94%A8%E3%81%AEdocker%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E6%A7%8B%E7%AF%89)
+    - [ECRへのデプロイ、Lambdaで実行](#ecr%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4lambda%E3%81%A7%E5%AE%9F%E8%A1%8C)
+    - [Lambda上でのSelemiumの安定稼働](#lambda%E4%B8%8A%E3%81%A7%E3%81%AEselemium%E3%81%AE%E5%AE%89%E5%AE%9A%E7%A8%BC%E5%83%8D)
+    - [Lambdaのウォームスタート対策](#lambda%E3%81%AE%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E5%AF%BE%E7%AD%96)
+    - [並列スクレイピングの負荷対策](#%E4%B8%A6%E5%88%97%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AE%E8%B2%A0%E8%8D%B7%E5%AF%BE%E7%AD%96)
+    - [付録：ホットリロードの実現](#%E4%BB%98%E9%8C%B2%E3%83%9B%E3%83%83%E3%83%88%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E3%81%AE%E5%AE%9F%E7%8F%BE)
+    - [まとめ](#%E3%81%BE%E3%81%A8%E3%82%81)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### はじめに
 
 初学者の学生エンジニアが複数のURLを並列処理で解析するツールを、DockerやSelemium、Lambdaの沼にハマりながら実装した備忘録です。
