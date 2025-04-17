@@ -50,7 +50,7 @@ ECSではなくLambdaを選択した理由はそこまでリクエスト数が�
 
 Dockerfileは以下のようになっています。
 
-```js
+```python
 # ----- ビルドステージ -----
 FROM --platform=linux/amd64 public.ecr.aws/lambda/python@sha256:63811c90432ba7a9e4de4fe1e9797a48dae0762f1d56cb68636c3d0a7239ff68 as build
 RUN dnf install -y unzip && \
