@@ -1,4 +1,4 @@
-# Docker→LambdaでSelemium+Geminiの並列スクレイピングを実装するまでの苦難
+# ECR→LambdaでSelemium+Geminiの並列スクレイピングを実装
 - [はじめに](#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB)
 - [実装意図](#%E5%AE%9F%E8%A3%85%E6%84%8F%E5%9B%B3)
 - [コード構成](#%E3%82%B3%E3%83%BC%E3%83%89%E6%A7%8B%E6%88%90)
