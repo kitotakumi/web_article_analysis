@@ -106,7 +106,7 @@ docker buildx build --platform linux/amd64 --provenance=false --push -t yourid.d
 
 ここでもプラットフォームの指定を行います。
 
-また`--provenance=false`が超重要です。これをつけないとメタデータのイメージが余分に1個生成されてしまい、Lambdaを作成できなくなります。
+また`--provenance=false`が超重要です。これをつけないとメタデータのイメージが余分に1個生成されてしまい、Lambdaを作成する際にエラります。
 
 ここまでできたらLambdaを作成します。コンソールの関数作成からコンテナイメージを選択します。
 
