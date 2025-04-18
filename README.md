@@ -1,8 +1,7 @@
 # Web Article Analysis
-<img alt="architecture" height="400px" src="https://github.com/kitotakumi/web_article_analysis/blob/main/architecture.png"/>
+<img alt="architecture" height="400px" src="https://github.com/kitotakumi/web_article_analysis/blob/main/architecture.png"/><br>
 
 ## 概要
-
 本プロジェクトは、複数の URL を受け取り、並列処理で各 URL の解析を行います。主要機能は以下です。
 
 - **全体スクリーンショットの取得**  
@@ -26,6 +25,8 @@ base64をやりとりするとデータサイズが大きくなってしまう�
 
 - **ホットリロード機能の実装**  
   開発中のホットリロード機能を実装しており、コード変更時に自動で反映されます。
+
+[開発記事](https://github.com/kitotakumi/web_article_analysis/blob/main/development_article.md)<br>
 
 ## フロントエンド
 https://github.com/user-attachments/assets/204631e3-f5af-41a4-8b59-029e7d040e6c
