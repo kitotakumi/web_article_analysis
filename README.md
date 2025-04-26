@@ -1,6 +1,7 @@
 # Web Article Analysis
 <img alt="architecture" height="400px" src="https://github.com/kitotakumi/web_article_analysis/blob/main/architecture.png"/><br>
 
+[開発記事はこちら](https://qiita.com/takumi-kito/items/27f4dcceee1c89a4368c#%E4%B8%A6%E5%88%97%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AE%E8%B2%A0%E8%8D%B7%E5%AF%BE%E7%AD%96)
 ## 概要
 本プロジェクトは、複数の URL を受け取り、並列処理で各 URL の解析を行います。主要機能は以下です。
 
@@ -26,7 +27,6 @@ base64をやりとりするとデータサイズが大きくなってしまう�
 - **ホットリロード機能の実装**  
   開発中のホットリロード機能を実装しており、コード変更時に自動で反映されます。
 
-[開発記事](https://github.com/kitotakumi/web_article_analysis/blob/main/development_article.md)<br>
 
 ## フロントエンド
 https://github.com/user-attachments/assets/204631e3-f5af-41a4-8b59-029e7d040e6c
