@@ -1,5 +1,6 @@
 # Web Article Analysis
 <img alt="architecture" height="400px" src="https://github.com/kitotakumi/web_article_analysis/blob/main/architecture.png"/><br>
+![image](https://github.com/user-attachments/assets/6ce0ba89-1c8d-4801-beff-9ff0796b929d)
 
 [開発記事はこちら](https://qiita.com/takumi-kito/items/27f4dcceee1c89a4368c)
 ## 概要
