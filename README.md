@@ -11,7 +11,11 @@
     - ユーザーが入力した分析項目について、AIで分析を行います。Gemini 2.0 Flashにmarkdownとスクショを読み込ませています。
 
 ## アーキテクチャ
-<img alt="architecture" height="400px" src="https://github.com/kitotakumi/web_article_analysis/blob/main/web_article_analysis_architecture.png"/><br>
+<img
+src="https://raw.githubusercontent.com/kitotakumi/web_article_analysis/main/web_article_analysis_architecture.png"
+  alt="architecture"
+  style="max-height:400px; width:auto; display:block;"
+/>
 
 - **コンテナ化された Lambda 環境**  
   社内アプリでリクエスト数が少ない想定であるため、イベント稼働のLambdaを用いています。  
