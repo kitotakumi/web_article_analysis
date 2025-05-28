@@ -14,7 +14,7 @@
 <img
 src="https://raw.githubusercontent.com/kitotakumi/web_article_analysis/main/web_article_analysis_architecture.png"
   alt="architecture"
-  style="max-height:400px; width:auto; display:block;"
+  style="height:400px; width:auto; display:block;"
 />
 
 - **コンテナ化された Lambda 環境**  
