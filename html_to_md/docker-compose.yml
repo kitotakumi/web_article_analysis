@@ -1,0 +1,21 @@
+services:
+  html_to_md: # サービス名 (コンテナの名前)
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: html_to_md:latest # 使用するイメージ名
+    ports:
+      - "9000:8080" # ポートマッピング
+    environment:
+      LOCAL_ENV: "true"
+      OPENAI_API_KEY: "api_key"
+    volumes:
+      - ./tmp:/tmp
+    develop:
+      watch:
+        - action: rebuild
+          path: ./main.py
+        - action: rebuild
+          path: ./Dockerfile
+        - action: rebuild
+          path: ./annotate_image.py

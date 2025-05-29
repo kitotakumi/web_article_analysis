@@ -1,0 +1,18 @@
+services:
+  analysis_a_url: # サービス名 (コンテナの名前)
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: fetch_html_screenshot_with_selenium:latest # 使用するイメージ名
+    ports:
+      - "9000:8080" # ポートマッピング
+    environment:
+      LOCAL_ENV: "true"
+    volumes:
+      - ./tmp:/tmp
+    develop:
+      watch:
+        - action: rebuild
+          path: ./main.py
+        - action: rebuild
+          path: ./Dockerfile
